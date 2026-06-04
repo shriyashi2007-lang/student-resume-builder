@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Resume Builder</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- html2pdf library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Student Resume Builder</h1>
+
+        <div class="form-section">
+            <input type="text" id="name" placeholder="Full Name">
+
+            <input type="email" id="email" placeholder="Email">
+
+            <input type="text" id="phone" placeholder="Phone Number">
+
+            <input type="text" id="college" placeholder="College Name">
+
+            <input type="text" id="course" placeholder="Course">
+
+            <textarea id="skills" placeholder="Skills (comma separated)"></textarea>
+
+            <textarea id="education" placeholder="Education Details"></textarea>
+
+            <textarea id="projects" placeholder="Projects"></textarea>
+
+            <button onclick="generateResume()">Generate Resume</button>
+        </div>
+
+        <div id="resume" class="resume">
+            <h2 id="r-name"></h2>
+            <p id="r-contact"></p>
+
+            <h3>Education</h3>
+            <p id="r-education"></p>
+
+            <h3>Course</h3>
+            <p id="r-course"></p>
+
+            <h3>Skills</h3>
+            <p id="r-skills"></p>
+
+            <h3>Projects</h3>
+            <p id="r-projects"></p>
+
+            <button id="downloadBtn" onclick="downloadPDF()">
+                Download PDF
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
