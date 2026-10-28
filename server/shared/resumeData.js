@@ -1,0 +1,21 @@
+export const templates = [
+  {id: 'ats-classic', name: 'ATS Classic', label: 'THE CLEAR CHOICE', description: 'Straightforward, structured, and easy for applicant tracking systems to read.'},
+  {id: 'modern-professional', name: 'Modern Professional', label: 'A POLISHED INTRODUCTION', description: 'A confident accent header, crisp sections, and a contemporary finish.'},
+  {id: 'minimal-elegance', name: 'Minimal Elegance', label: 'LESS, BEAUTIFULLY DONE', description: 'A centered introduction and generous space for your story to breathe.'},
+  {id: 'tech-developer', name: 'Tech Developer', label: 'BUILT FOR BUILDERS', description: 'A dark header and technical sidebar that put your stack in the spotlight.'},
+  {id: 'creative-graduate', name: 'Creative Graduate', label: 'A LITTLE MORE YOU', description: 'An expressive color sidebar and timeline for a memorable first impression.'}
+];
+export const fonts = ['Inter', 'Lora', 'Merriweather', 'Source Sans 3', 'Roboto', 'JetBrains Mono'];
+export const sectionIds = ['summary', 'education', 'skills', 'projects', 'experience', 'certifications', 'achievements', 'extras'];
+export const defaultSettings = {font: 'Inter', fontSize: 12, accent: '#6352a0', sectionOrder: sectionIds, hiddenSections: []};
+export const emptyData = {personal: {name: '', headline: '', email: '', phone: '', location: '', linkedin: '', github: '', portfolio: '', summary: ''}, education: [], skills: {languages: [], frontend: [], backend: [], databases: [], tools: [], softSkills: []}, projects: [], experience: [], certifications: [], achievements: [], extras: {languages: [], interests: [], extracurriculars: ''}};
+export function newResume() {return {title: 'Untitled resume', template: 'ats-classic', settings: structuredClone(defaultSettings), data: structuredClone(emptyData)};}
+export const sampleResume = {title: 'Alex Morgan — Graduate Resume', template: 'modern-professional', settings: {...defaultSettings}, data: {
+  personal: {name: 'Alex Morgan', headline: 'Computer Science Student', email: 'alex@example.com', phone: '+91 98765 43210', location: 'Bengaluru, India', linkedin: 'https://linkedin.com/in/alex-morgan', github: 'https://github.com/alex-morgan', portfolio: '', summary: 'Curious computer science student who turns complex problems into thoughtful digital experiences. Seeking a software engineering internship to contribute full-stack development skills and a collaborative mindset.'},
+  education: [{college: 'National Institute of Technology', degree: 'B.Tech', specialization: 'Computer Science', startYear: '2023', graduationYear: '2027', grade: '8.8 / 10 CGPA', coursework: 'Data Structures, Algorithms, Database Systems'}],
+  skills: {languages: ['JavaScript', 'Python', 'Java'], frontend: ['React', 'HTML', 'CSS'], backend: ['Node.js', 'Express'], databases: ['MongoDB', 'PostgreSQL'], tools: ['Git', 'Figma'], softSkills: ['Collaboration', 'Problem solving']},
+  projects: [{name: 'Campus Connect', description: 'A platform helping students discover events and connect with campus communities.', technologies: ['React', 'Node.js', 'MongoDB'], github: 'https://github.com/alex-morgan/campus-connect', live: '', achievements: 'Built an event discovery experience used by 200+ students.\nReduced search time by 35% with category filters.'}, {name: 'Study Sprint', description: 'A focused study timer with progress tracking and a distraction-free interface.', technologies: ['JavaScript', 'CSS'], github: '', live: '', achievements: 'Designed 3 accessible themes and responsive layouts.'}],
+  experience: [{title: 'Web Development Intern', company: 'Bright Ideas Studio', location: 'Remote', start: '2025-06', end: '2025-08', current: false, responsibilities: 'Developed reusable React components for client dashboards.', achievements: 'Improved page load speed by 20% through asset optimization.'}],
+  certifications: [{name: 'Responsive Web Design', issuer: 'freeCodeCamp', issueDate: '2025-04', url: 'https://www.freecodecamp.org/learn'}],
+  achievements: [{category: 'Hackathon', description: 'Finalist among 40 teams at the Campus Innovation Challenge, 2025.'}], extras: {languages: ['English', 'Hindi'], interests: ['Open source', 'Photography'], extracurriculars: 'Student coding club volunteer'}
+}};
