@@ -1,62 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Resume Builder</title>
-    <link rel="stylesheet" href="style.css">
-
-    <!-- html2pdf library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10091e">
+  <meta name="description" content="Turn your potential into a polished resume. A free, simple resume builder made for students and their next big step.">
+  <title>Student Resume — Your next chapter starts here</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script defer src="script.js"></script>
 </head>
 <body>
-
-    <div class="container">
-        <h1>Student Resume Builder</h1>
-
-        <div class="form-section">
-            <input type="text" id="name" placeholder="Full Name">
-
-            <input type="email" id="email" placeholder="Email">
-
-            <input type="text" id="phone" placeholder="Phone Number">
-
-            <input type="text" id="college" placeholder="College Name">
-
-            <input type="text" id="course" placeholder="Course">
-
-            <textarea id="skills" placeholder="Skills (comma separated)"></textarea>
-
-            <textarea id="education" placeholder="Education Details"></textarea>
-
-            <textarea id="projects" placeholder="Projects"></textarea>
-
-            <button onclick="generateResume()">Generate Resume</button>
+  <header class="navigation wrap">
+    <a class="brand" href="#" aria-label="Student Resume home"><span class="brand-icon">≋</span> student<span class="brand-light">resume</span><span class="brand-dot">.</span></a>
+    <nav aria-label="Main navigation"><a href="#features">Why Student Resume</a><a href="#how-it-works">How it works</a></nav>
+    <a class="nav-cta" href="#builder">Start building <span aria-hidden="true">↗</span></a>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="orb orb-one" aria-hidden="true"></div><div class="orb orb-two" aria-hidden="true"></div><div class="orbit" aria-hidden="true"></div>
+      <div class="hero-content wrap">
+        <div class="announcement"><span class="status-dot"></span> BIG AMBITIONS. BEAUTIFUL BEGINNINGS. <span aria-hidden="true">↗</span></div>
+        <div class="hero-icon" aria-hidden="true"><span></span><span></span><span></span><i>✦</i></div>
+        <p class="eyebrow">YOUR POTENTIAL, ON PAPER</p>
+        <h1>Your next chapter<br>starts with a <span>great resume.</span></h1>
+        <p class="hero-description">You have the potential. Give it a beautiful introduction.<br>Build a resume that opens doors — even if it’s your first.</p>
+        <div class="hero-actions"><a class="button primary" href="#builder">Build my resume <span aria-hidden="true">↗</span></a><a class="button secondary" href="#preview">See an example <span aria-hidden="true">↓</span></a></div>
+        <div class="hero-notes"><span>✓ Free to create</span><span>✓ No sign-up needed</span><span>✓ Download as PDF</span></div>
+        <div class="product-preview" id="preview">
+          <div class="window-bar"><div class="window-dots"><i></i><i></i><i></i></div><span>YOUR FUTURE, TAKING SHAPE</span><span class="preview-badge">✦ Made for your next move</span></div>
+          <div class="preview-body">
+            <aside class="preview-sidebar"><div class="preview-label">YOUR WORKSPACE</div><h3>A little about you.<br>A lot of possibility.</h3><div class="step active"><span>01</span> Personal details <b>✓</b></div><div class="step"><span>02</span> Education</div><div class="step"><span>03</span> Skills & projects</div><div class="preview-tip">✧<p>You don’t need years of experience.<br>Just a place to start.</p></div></aside>
+            <div class="paper-scene"><div class="floating-tag">✦ Your potential looks good on you.</div><article class="sample-paper"><div class="sample-top"><div><p class="paper-overline">HELLO, I’M</p><h2>Alex Morgan</h2><p class="sample-role">Computer Science Student</p></div><span class="monogram">AM</span></div><p class="sample-contact">alex.morgan@email.com &nbsp; · &nbsp; Bengaluru, India</p><h4>PROFILE</h4><p>Curious problem-solver with a passion for building thoughtful digital experiences. Ready to learn, contribute, and make an impact.</p><h4>EDUCATION</h4><div class="sample-row"><b>B.Tech in Computer Science</b><span>2023 — 2027</span></div><p>National Institute of Technology · CGPA: 8.8/10</p><h4>SELECTED PROJECTS</h4><b>Campus Connect</b><p>A student community platform to discover events and collaborate on ideas.</p><h4>SKILLS</h4><div class="skill-tags"><span>JavaScript</span><span>React</span><span>Python</span><span>UI Design</span></div></article><div class="ready-tag"><span class="status-dot"></span> Ready for your next opportunity</div></div>
+          </div>
         </div>
-
-        <div id="resume" class="resume">
-            <h2 id="r-name"></h2>
-            <p id="r-contact"></p>
-
-            <h3>Education</h3>
-            <p id="r-education"></p>
-
-            <h3>Course</h3>
-            <p id="r-course"></p>
-
-            <h3>Skills</h3>
-            <p id="r-skills"></p>
-
-            <h3>Projects</h3>
-            <p id="r-projects"></p>
-
-            <button id="downloadBtn" onclick="downloadPDF()">
-                Download PDF
-            </button>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
-
+      </div>
+    </section>
+    <section class="features wrap" id="features"><p class="eyebrow">LESS FRICTION. MORE FUTURE.</p><h2>A fresh start, beautifully simple.</h2><div class="feature-grid"><article><span class="feature-icon">✧</span><h3>Made for your first step</h3><p>Give your education, skills, and projects the space they deserve. Experience starts somewhere.</p></article><article><span class="feature-icon">▤</span><h3>Polished by default</h3><p>A clean, readable layout that keeps the attention on you. No design experience required.</p></article><article><span class="feature-icon">↗</span><h3>Yours to take anywhere</h3><p>Create your resume and download a PDF, ready for internships, applications, and what’s next.</p></article></div></section>
+    <section class="how wrap" id="how-it-works"><div><p class="eyebrow">FROM BLANK PAGE TO WHAT’S NEXT</p><h2>Three steps.<br>One great first impression.</h2></div><ol><li><span>01</span><div><h3>Tell your story</h3><p>Add your details, education, and the things you’re good at.</p></div></li><li><span>02</span><div><h3>Make it yours</h3><p>Generate your resume and review your story on the page.</p></div></li><li><span>03</span><div><h3>Take the next step</h3><p>Download your PDF and put yourself out there.</p></div></li></ol></section>
+    <section class="builder-section wrap" id="builder"><p class="eyebrow">LET’S MAKE YOUR INTRODUCTION</p><h2>Big things start right here.</h2><p class="section-description">Bring your story. We’ll give it a place to shine.</p><div class="builder-grid"><form id="resume-form" class="form-section"><div class="form-heading"><span class="status-dot"></span> Your details <span>01 — YOUR NEXT CHAPTER</span></div><div class="field-grid"><label>Full name<input type="text" id="name" placeholder="Alex Morgan" autocomplete="name" required></label><label>Email address<input type="email" id="email" placeholder="alex@example.com" autocomplete="email" required></label><label>Phone number<input type="tel" id="phone" placeholder="+91 98765 43210" autocomplete="tel"></label><label>College name<input type="text" id="college" placeholder="Your college or university"></label></div><label>Course<input type="text" id="course" placeholder="B.Tech in Computer Science"></label><label>Skills<textarea id="skills" placeholder="JavaScript, Python, design, problem-solving…" rows="2"></textarea></label><label>Education<textarea id="education" placeholder="Your degree, graduation year, and academic achievements" rows="3"></textarea></label><label>Projects<textarea id="projects" placeholder="What have you built or worked on? Tell your story." rows="3"></textarea></label><button class="button primary" type="submit">Generate my resume <span aria-hidden="true">↗</span></button></form><div class="resume-area"><div id="empty-preview" class="empty-preview"><span class="empty-icon">▤</span><h3>Your story goes here.</h3><p>Fill in your details and generate<br>your first impression.</p><span class="empty-caption">A LITTLE EFFORT. A WORLD OF POSSIBILITY.</span></div><article id="resume" class="resume" aria-live="polite" hidden><h2 id="r-name"></h2><p id="r-contact" class="resume-contact"></p><h3>Education</h3><p id="r-education"></p><h3>Course</h3><p id="r-course"></p><h3>Skills</h3><p id="r-skills"></p><h3>Projects</h3><p id="r-projects"></p></article><button class="button primary" id="downloadBtn" type="button" hidden>Download PDF <span aria-hidden="true">↓</span></button><p id="download-status" role="status"></p></div></div></section>
+  </main>
+  <footer class="wrap"><a class="brand" href="#"><span class="brand-icon">≋</span> student<span class="brand-light">resume</span><span class="brand-dot">.</span></a><p>Made for the potential in you.</p><span>Your next chapter is waiting. ↗</span></footer>
 </body>
 </html>

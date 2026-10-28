@@ -1,169 +1,52 @@
-# Student Resume Builder
+# Resumify
 
-A simple web-based Student Resume Builder developed using HTML, CSS, and JavaScript. Users can enter their details through a form, generate a professional-looking resume instantly, and download it as a PDF.
+Resumify is a polished student resume builder with a React/Vite client and an Express/Node.js API. It guides students through eight content sections, renders five real resume templates, autosaves guest drafts, runs practical ATS-friendly checks, and exports selectable-text PDFs.
 
-## Features
+## What works
 
-- User-friendly form for entering resume details
-- Generates a formatted resume dynamically
-- Download resume as PDF
-- Responsive design
-- No backend required
-- Easy to customize and extend
+- Eight-step resume editor with validation and removable skill tags
+- Live A4 preview with zoom, print, multi-page guides, and responsive Editor/Preview tabs
+- Five templates: ATS Classic, Modern Professional, Minimal Elegance, Tech Developer, and Creative Graduate
+- Design controls for font, size, accent, section order, and visibility
+- Guest draft autosave in `localStorage`
+- Completeness score, ATS-friendly checks, and offline writing suggestions
+- Express endpoints for validation/insights and PDF generation
+- Shared, HTML-escaped renderer used by the preview and Chromium PDF service
+- Dark and light themes with reduced-motion support
 
-## Technologies Used
+## Local setup
 
-- HTML5
-- CSS3
-- JavaScript (ES6)
-- html2pdf.js library
-
-## Project Structure
-
-```text
-Student-Resume-Builder/
-│
-├── index.html
-├── style.css
-├── script.js
-└── README.md
-```
-
-## Installation
-
-1. Download or clone the repository:
+Requirements: Node.js 20.19 or newer. MongoDB is not required for the current guest workflow.
 
 ```bash
-git clone https://github.com/your-username/student-resume-builder.git
+npm install
+npm run dev
 ```
 
-2. Navigate to the project folder:
+Open `http://127.0.0.1:5173`. The API runs at `http://127.0.0.1:5000`.
+
+Copy `.env.example` to `.env` when you need to change ports or deployment URLs. Never commit the resulting `.env` file.
+
+## Useful commands
 
 ```bash
-cd student-resume-builder
+npm run dev       # web client and API
+npm run build     # production client build
+npm run lint      # client lint
+npm test          # server tests
+npm run verify    # lint, build, and tests
 ```
 
-3. Open `index.html` in your browser.
+## API
 
-No additional setup or installation is required.
+- `GET /api/health`
+- `POST /api/resumes/inspect`
+- `POST /api/resumes/pdf`
 
-## Usage
+The PDF route uses Puppeteer/Chromium in Linux production. On Windows development it uses a selectable-text portable PDF fallback by default; set `FORCE_CHROMIUM_PDF=true` to test Chromium locally.
 
-1. Enter your personal details:
-   - Full Name
-   - Email Address
-   - Phone Number
-   - College Name
-   - Course
-   - Skills
-   - Education Details
-   - Projects
+## Deployment
 
-2. Click the **Generate Resume** button.
+Deploy `client` to Vercel and set `VITE_API_URL` to the Render API URL ending in `/api`. Deploy the root repository to Render with [render.yaml](render.yaml). Configure `CLIENT_URL` with the exact Vercel origin.
 
-3. Review the generated resume.
-
-4. Click **Download PDF** to save the resume as a PDF file.
-
-## Screenshots
-
-### Resume Form
-
-Add a screenshot here:
-
-```text
-screenshots/form.png
-```
-
-### Generated Resume
-
-Add a screenshot here:
-
-```text
-screenshots/resume.png
-```
-
-## Example Resume Data
-
-| Field | Example |
-|---------|---------|
-| Name | Rahul Sharma |
-| Email | rahul@example.com |
-| Phone | +91 9876543210 |
-| College | Delhi University |
-| Course | B.Tech Computer Science |
-| Skills | HTML, CSS, JavaScript, Python |
-| Education | B.Tech CGPA: 8.5 |
-| Projects | Student Resume Builder |
-
-## Customization
-
-You can easily extend this project by adding:
-
-- Profile Picture Upload
-- Work Experience Section
-- Certifications
-- Achievements
-- Multiple Resume Templates
-- Dark Mode
-- Local Storage Support
-- Print Resume Feature
-- ATS-Friendly Templates
-
-## Dependencies
-
-The project uses the following external library:
-
-```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-```
-
-## Browser Support
-
-- Google Chrome
-- Microsoft Edge
-- Mozilla Firefox
-- Opera
-- Brave
-
-## Future Enhancements
-
-- Export to DOCX
-- Cloud Storage Support
-- User Authentication
-- Resume Template Selection
-- Drag-and-Drop Section Arrangement
-- AI-based Resume Suggestions
-
-## Contributing
-
-Contributions are welcome.
-
-1. Fork the repository
-2. Create a new branch
-
-```bash
-git checkout -b feature-name
-```
-
-3. Commit your changes
-
-```bash
-git commit -m "Add new feature"
-```
-
-4. Push to GitHub
-
-```bash
-git push origin feature-name
-```
-
-5. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License.
-
-
-
-⭐ If you found this project useful, consider giving it a star on GitHub.
+The current release supports the complete guest builder flow. Account authentication, MongoDB resume syncing, and the dashboard are the next backend milestone; the navigation keeps those destinations visible for the planned expansion.
