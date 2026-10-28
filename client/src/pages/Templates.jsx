@@ -1,0 +1,4 @@
+import {motion} from 'framer-motion';
+import TemplateCard from '../components/TemplateCard.jsx';
+import {templates} from '../shared/resumeData.js';
+export default function Templates() {return <motion.main className="container page-content" initial={{opacity: 0}} animate={{opacity: 1}}><div className="page-heading centered"><p className="eyebrow">A STYLE FOR YOUR STORY</p><h1>Find your first impression.</h1><p>Five thoughtful designs. One extraordinary you.<br/>Switch at any time — your content stays with you.</p></div><div className="notice"><strong>Applying through an automated portal?</strong> ATS Classic’s single-column layout is the most straightforward choice. Multi-column templates can parse less reliably.</div><div className="template-grid">{templates.map(t => <TemplateCard key={t.id} template={t}/>)}</div></motion.main>;}
