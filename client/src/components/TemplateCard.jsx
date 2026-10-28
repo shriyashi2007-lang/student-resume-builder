@@ -1,0 +1,5 @@
+import {Link} from 'react-router-dom';
+import {ArrowUpRight, Check} from 'lucide-react';
+import ResumePreview from './ResumePreview.jsx';
+import {sampleResume} from '../shared/resumeData.js';
+export default function TemplateCard({template, selected, onSelect}) {return <article className={`template-card ${selected ? 'selected' : ''}`}><div className="template-image"><ResumePreview thumbnail resume={{...sampleResume, template: template.id}}/><span className="template-number">{template.id === 'ats-classic' ? 'ATS FAVORITE' : template.label}</span></div><div className="template-card-body"><div><h3>{template.name}</h3><p>{template.description}</p></div>{onSelect ? <button className={`button button-small ${selected ? 'button-primary' : 'button-outline'}`} onClick={() => onSelect(template.id)}>{selected ? <><Check size={15}/> Selected</> : 'Use template'}</button> : <Link className="button button-small button-outline" to={`/builder?template=${template.id}`}>Use template <ArrowUpRight size={14}/></Link>}</div></article>;}
