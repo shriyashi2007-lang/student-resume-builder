@@ -1,0 +1,15 @@
+import express from 'express';
+import helmet from 'helmet';
+import cors from 'cors';
+import resumeTools from './routes/resumeTools.js';
+const app = express();
+const allowedOrigins = (process.env.CLIENT_URL || 'http://localhost:5173,http://127.0.0.1:5173').split(',').map(x => x.trim());
+app.disable('x-powered-by');
+app.use(helmet({contentSecurityPolicy: false, crossOriginResourcePolicy: {policy:'cross-origin'}}));
+app.use(cors({origin(origin, callback) {if (!origin || allowedOrigins.includes(origin)) return callback(null,true); callback(new Error('Origin not allowed'));}, credentials:true}));
+app.use(express.json({limit:'1mb'}));
+app.get('/api/health', (_req, res) => res.json({status: 'ok', service: 'resumify'}));
+app.use('/api/resumes', resumeTools);
+app.use((req,res) => res.status(404).json({message:'Route not found'}));
+app.use((error,_req,res,_next) => {console.error(error.message); res.status(error.status || 500).json({message: process.env.NODE_ENV === 'production' ? 'Something went wrong.' : error.message});});
+export default app;
