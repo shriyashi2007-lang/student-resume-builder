@@ -1,0 +1,6 @@
+{
+  "name": "resumify", "private": true, "version": "1.0.0",
+  "workspaces": ["client", "server"],
+  "scripts": {"dev": "concurrently -n web,api -c cyan,magenta \"npm run dev -w client\" \"npm run dev -w server\"", "build": "npm run build -w client", "test": "npm test -w server", "lint": "npm run lint -w client", "start": "npm start -w server", "verify": "npm run lint && npm run build && npm test"},
+  "devDependencies": {"concurrently": "^9.2.1"}, "engines": {"node": ">=20.19"}
+}
