@@ -1,0 +1,9 @@
+{
+  "installCommand": "npm install",
+  "buildCommand": "npm run build",
+  "outputDirectory": "client/dist",
+  "framework": "vite",
+  "rewrites": [
+    { "source": "/((?!assets/|favicon.svg).*)", "destination": "/index.html" }
+  ]
+}
